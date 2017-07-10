@@ -32,8 +32,10 @@ class DataMiner(object):
         authors = set()
         lines = raw_data.strip().split('\n')
         for line in lines:
-            # Something like: [cef94a2] mjc23 2017-07-10 Added DataMiner class
-            m = re.match(r"\s*\[\w*\]\s(\S*)\s.*", line)
+            # Something like:
+            # [cef94a2] mjc23 2017-07-10 Added DataMiner class
+            # As names can contain spaces we need to match up to the date
+            m = re.match(r"\s*\[\w*\]\s(\S[\S\s]*\S)\s\d\d\d\d-\d\d-\d\d.*", line)
             if m is not None:
                 authors.add(m.groups()[0])
         return len(authors)

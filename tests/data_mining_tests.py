@@ -41,13 +41,19 @@ class DataMiningGitLogTests(unittest.TestCase):
         data_miner = DataMiner()
         self.assertEqual(8, data_miner.extract_number_entities_changed(GITLOG_DATA))
 
+    def test_correctly_extracts_number_of_entities(self):
+        # TODO: write this test
+        pass
+
     def test_data_miner_using_code_maat_data(self):
         maat_data = ""
         with open("maat_evo.log") as file:
             maat_data = file.read()
 
         data_miner = DataMiner()
+
+        # The values that should be returned are the ones given in the book
         self.assertEqual(88, data_miner.extract_number_commits(maat_data))
-        # TODO: Fails because of the space in the name
         self.assertEqual(2, data_miner.extract_number_authors(maat_data))
         self.assertEqual(283, data_miner.extract_number_entities_changed(maat_data))
+        self.assertEqual(45, data_miner.extract_number_entities(maat_data))
