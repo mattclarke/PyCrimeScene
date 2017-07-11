@@ -24,7 +24,7 @@ GITLOG_DATA = """
 
 class DataMiningGitLogTests(unittest.TestCase):
     def setUp(self):
-        with open("maat_evo.log") as file:
+        with open("test_data/maat_evo.log") as file:
             self.maat_data = file.read()
 
     def test_correctly_extracts_number_of_commits(self):
