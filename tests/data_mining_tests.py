@@ -23,9 +23,18 @@ GITLOG_DATA = """
 
 
 class DataMiningGitLogTests(unittest.TestCase):
-    def test_correctly_extracts_number_of_commits_from_git_log(self):
+    def setUp(self):
+        with open("maat_evo.log") as file:
+            self.maat_data = file.read()
+
+    def test_correctly_extracts_number_of_commits(self):
         data_miner = DataMiner()
         self.assertEqual(5, data_miner.extract_number_commits(GITLOG_DATA))
+
+    def test_correctly_extracts_number_of_commits_from_code_maat_log(self):
+        data_miner = DataMiner()
+        # The value to match is the one given by the book
+        self.assertEqual(88, data_miner.extract_number_commits(self.maat_data))
 
     def test_if_commit_id_in_commit_message_number_of_commits_still_correct(self):
         # Stuff a commit id into a commit message - it might happen in real life
@@ -37,23 +46,21 @@ class DataMiningGitLogTests(unittest.TestCase):
         data_miner = DataMiner()
         self.assertEqual(3, data_miner.extract_number_authors(GITLOG_DATA))
 
+    def test_correctly_extracts_number_of_authors_from_code_maat_log(self):
+        data_miner = DataMiner()
+        # The value to match is the one given by the book
+        self.assertEqual(2, data_miner.extract_number_authors(self.maat_data))
+
     def test_correctly_extracts_number_of_entities_changed(self):
         data_miner = DataMiner()
         self.assertEqual(8, data_miner.extract_number_entities_changed(GITLOG_DATA))
 
-    def test_correctly_extracts_number_of_entities(self):
-        # TODO: write this test
-        pass
-
-    def test_data_miner_using_code_maat_data(self):
-        maat_data = ""
-        with open("maat_evo.log") as file:
-            maat_data = file.read()
-
+    def test_correctly_extracts_number_of_entities_changed_from_code_maat_log(self):
         data_miner = DataMiner()
+        # The value to match is the one given by the book
+        self.assertEqual(283, data_miner.extract_number_entities_changed(self.maat_data))
 
-        # The values that should be returned are the ones given in the book
-        self.assertEqual(88, data_miner.extract_number_commits(maat_data))
-        self.assertEqual(2, data_miner.extract_number_authors(maat_data))
-        self.assertEqual(283, data_miner.extract_number_entities_changed(maat_data))
-        self.assertEqual(45, data_miner.extract_number_entities(maat_data))
+    def test_correctly_extracts_number_of_entities_from_code_maat_log(self):
+        data_miner = DataMiner()
+        # The value to match is the one given by the book
+        self.assertEqual(45, data_miner.extract_number_entities(self.maat_data))
