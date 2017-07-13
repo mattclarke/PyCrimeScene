@@ -4,6 +4,8 @@ from data_miner import DataMiner
 GITLOG_DATA = """
 [f9f97a0] Matt Clarke 2017-07-10 Added png for testing purposes
 -       -       tests/example.png
+12      0       tests/DataMiningTests.py
+25      25      tests/data_mining_tests.py
 
 [cef94a2] mjc23 2017-07-10 Added DataMiner class
 3       0       data_miner.py
@@ -53,7 +55,7 @@ class DataMiningGitLogTests(unittest.TestCase):
 
     def test_correctly_extracts_number_of_entities_changed(self):
         data_miner = DataMiner()
-        self.assertEqual(8, data_miner.extract_number_entities_changed(GITLOG_DATA))
+        self.assertEqual(10, data_miner.extract_number_entities_changed(GITLOG_DATA))
 
     def test_correctly_extracts_number_of_entities_changed_from_code_maat_log(self):
         data_miner = DataMiner()
@@ -64,3 +66,11 @@ class DataMiningGitLogTests(unittest.TestCase):
         data_miner = DataMiner()
         # The value to match is the one given by the book
         self.assertEqual(45, data_miner.extract_number_entities(self.maat_data))
+
+    def test_correctly_extracts_dict_of_filenames_with_number_of_changes(self):
+        data_miner = DataMiner()
+        ans = data_miner.extract_changes_per_file(GITLOG_DATA)
+        self.assertEqual(1, ans['LICENSE'])
+        self.assertEqual(1, ans['data_miner.py'])
+        self.assertEqual(2, ans['tests/DataMiningTests.py'])
+        self.assertEqual(3, ans['tests/data_mining_tests.py'])

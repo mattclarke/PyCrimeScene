@@ -42,7 +42,7 @@ class DataMiner(object):
 
     def extract_number_entities_changed(self, raw_data):
         """
-        Returns the number of times files have been changed.
+        Returns the number of times files have had changes committed.
 
         Used with prettified output from:
             git log --pretty=format:'[%h] %an %ad %s' --date=short --numstat
@@ -50,16 +50,12 @@ class DataMiner(object):
         :param raw_data: the output of the git log
         :return: number of times files changed
         """
+        files = self.extract_changes_per_file(raw_data)
         num_changes = 0
-        lines = raw_data.strip().split('\n')
-        for line in lines:
-            # Something like:
-            # 3       0       data_miner.py
-            # or:
-            # -       -       some.png
-            m = re.match(r"\s*[\d|-].*", line)
-            if m is not None:
-                num_changes += 1
+        
+        for k, v in files.items():
+            num_changes += v
+
         return num_changes
 
     def extract_number_entities(self, raw_data):
@@ -69,7 +65,17 @@ class DataMiner(object):
         :param raw_data: the output of the git log
         :return: number of files changed
         """
-        files = set()
+        files = self.extract_changes_per_file(raw_data)
+        return len(files)
+
+    def extract_changes_per_file(self, raw_data):
+        """
+        Returns the number of times each file has changed.
+
+        :param raw_data: the output of the git log
+        :return: dict of filename containing number of changes
+        """
+        files = {}
         lines = raw_data.strip().split('\n')
         for line in lines:
             # Something like:
@@ -78,5 +84,9 @@ class DataMiner(object):
             # -       -       some.png
             m = re.match(r"\s*[\d|-]+\s*[\d|-]+\s*(\S*)", line)
             if m is not None:
-                files.add(m.groups()[0])
-        return len(files)
+                name = m.groups()[0]
+                if name in files:
+                    files[name] += 1
+                else:
+                    files[name] = 1
+        return files

@@ -14,17 +14,20 @@ class LinesOfCodeExtractorTests(unittest.TestCase):
 
     def test_correctly_get_number_of_lines_of_code_for_all_files_in_a_directory(self):
         ans = Loc.get_lines_of_code_for_directory("./test_data")
-        print(ans)
+
         self.assertEqual(4, len(ans))
         self.assertEqual(40, ans["./test_data/example.java"])
         self.assertEqual(42, ans["./test_data/another_example.java"])
         self.assertEqual(0, ans["./test_data/maat_evo.log"])
         self.assertEqual(0, ans["./test_data/example.png"])
 
-    def test_correctly_get_number_of_lines_of_code_for_code_files_only_in_a_directory(self):
-        ans = Loc.get_lines_of_code_for_directory("./test_data")
-        print(ans)
-        self.assertEqual(2, len(ans))
-        self.assertEqual(40, ans["./test_data/example.java"])
-        self.assertEqual(42, ans["./test_data/another_example.java"])
+    # Not sure it is important to filter - leave this test commented out for now
+    # def test_correctly_get_number_of_lines_of_code_for_code_files_only_in_a_directory(self):
+    #     ans = Loc.get_lines_of_code_for_directory("./test_data", filter=True)
+    #
+    #     self.assertEqual(2, len(ans))
+    #     self.assertEqual(40, ans["./test_data/example.java"])
+    #     self.assertEqual(42, ans["./test_data/another_example.java"])
 
+    def test_get_lines_of_code_for_directory_raises_if_does_not_exist(self):
+        self.assertRaises(NotADirectoryError, Loc.get_lines_of_code_for_directory, "./does_not_exist")

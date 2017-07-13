@@ -28,8 +28,12 @@ class LinesOfCodeExtractor(object):
 
         :param directory: the path to the directory
         :return: dictionary of files with their number of lines
+        :raises NotADirectoryError: if directory does not exist
         """
         files = {}
+
+        if not os.path.isdir(directory):
+            raise NotADirectoryError("Could not find directory {0}".format(directory))
 
         for f in os.listdir(directory):
             full_path = os.path.join(directory, f)
