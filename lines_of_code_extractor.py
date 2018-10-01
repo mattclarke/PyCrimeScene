@@ -30,14 +30,23 @@ class LinesOfCodeExtractor(object):
         :return: dictionary of files with their number of lines
         :raises NotADirectoryError: if directory does not exist
         """
-        files = {}
+        loc_files = {}
 
         if not os.path.isdir(directory):
             raise NotADirectoryError("Could not find directory {0}".format(directory))
 
-        for f in os.listdir(directory):
-            full_path = os.path.join(directory, f)
-            if os.path.isfile(full_path):
+        for root, dirs, files in os.walk(directory):
+            # Ignore hidden files etc.
+            files = [f for f in files if not f[0] == '.']
+            dirs[:] = [d for d in dirs if not d[0] == '.']
+
+            for file in files:
+                full_path = os.path.join(root, file)
                 ans = LinesOfCodeExtractor.get_lines_of_code(full_path)
-                files[full_path] = ans
-        return files
+
+                # Remove the supplied directory as the git log won't have this
+                full_path = os.path.relpath(full_path, directory)
+
+                loc_files[full_path] = ans
+
+        return loc_files
