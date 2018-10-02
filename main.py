@@ -1,8 +1,10 @@
 import argparse
+import json
 from data_miner import DataMiner
 from lines_of_code_extractor import LinesOfCodeExtractor
 from hotspot_compiler import HotSpotCompiler
 from weights_normaliser import normalise_weights
+from structure_generator import generate_structure
 
 
 def main(logfile, directory, output):
@@ -23,16 +25,25 @@ def main(logfile, directory, output):
     # Compile hotspots
     hotspots = HotSpotCompiler.merge_raw_data(weights, loc)
 
-    # with open(output, 'w') as myfile:
-    for hs in hotspots:
-        print("%s %s %s" % hs)
+    # Dump as CSV
+    print(f"Generating CSV file: {output}.csv")
+    with open(f"{output}.csv", "w") as outfile:
+        for hs in hotspots:
+            outfile.write(f"{hs[0]},{hs[1]},{hs[2]}\n")
+
+    # Generate structure for d3
+    structure = generate_structure(hotspots)
+
+    # Dump structure as JSON
+    print(f"Generating JSON file: {output}.json")
+    with open(f"{output}.json", "w") as outfile:
+        json.dump(structure, outfile)
 
 
 if __name__ == "__main__":
-    parser = argparse.ArgumentParser(description='Process a git log file.')
+    parser = argparse.ArgumentParser(description="Process a git log file.")
     parser.add_argument("logfile")
     parser.add_argument("directory")
     parser.add_argument("output")
     args = parser.parse_args()
     main(args.logfile, args.directory, args.output)
-    # main('/Users/mattclarke/Code/Repos/Others/code-maat/maat_evo.log', '/Users/mattclarke/Code/Repos/Others/code-maat')
