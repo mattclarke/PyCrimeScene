@@ -16,7 +16,7 @@ class LinesOfCodeExtractor(object):
         :raises FileNotFoundError: if file is not found
         """
         if os.path.isfile(filename):
-            analysis = pygount.source_analysis(filename, 'group')
+            analysis = pygount.source_analysis(filename, "group")
             return analysis.code
         else:
             raise FileNotFoundError("Could not find file {0}".format(filename))
@@ -37,8 +37,8 @@ class LinesOfCodeExtractor(object):
 
         for root, dirs, files in os.walk(directory):
             # Ignore hidden files etc.
-            files = [f for f in files if not f[0] == '.']
-            dirs[:] = [d for d in dirs if not d[0] == '.']
+            files = [f for f in files if not f[0] == "."]
+            dirs[:] = [d for d in dirs if not d[0] == "."]
 
             for file in files:
                 full_path = os.path.join(root, file)

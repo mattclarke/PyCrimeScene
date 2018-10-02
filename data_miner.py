@@ -13,7 +13,7 @@ class DataMiner(object):
         :return: number of commits in the output
         """
         num_commits = 0
-        lines = raw_data.strip().split('\n')
+        lines = raw_data.strip().split("\n")
         for line in lines:
             if line.strip().startswith("["):
                 num_commits += 1
@@ -30,7 +30,7 @@ class DataMiner(object):
         :return: number of committing authors
         """
         authors = set()
-        lines = raw_data.strip().split('\n')
+        lines = raw_data.strip().split("\n")
         for line in lines:
             # Something like:
             # [cef94a2] mjc23 2017-07-10 Added DataMiner class
@@ -52,7 +52,7 @@ class DataMiner(object):
         """
         files = self.extract_changes_per_file(raw_data)
         num_changes = 0
-        
+
         for k, v in files.items():
             num_changes += v
 
@@ -76,7 +76,7 @@ class DataMiner(object):
         :return: dict of filename containing number of changes
         """
         files = {}
-        lines = raw_data.strip().split('\n')
+        lines = raw_data.strip().split("\n")
         for line in lines:
             # Something like:
             # 3       0       data_miner.py

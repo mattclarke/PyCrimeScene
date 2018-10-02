@@ -10,7 +10,9 @@ class LinesOfCodeExtractorTests(unittest.TestCase):
         self.assertEqual(40, Loc.get_lines_of_code("test_data/example.java"))
 
     def test_get_number_of_lines_of_code_raises_if_file_does_not_exist(self):
-        self.assertRaises(FileNotFoundError, Loc.get_lines_of_code, "test_data/does_not_exist.java")
+        self.assertRaises(
+            FileNotFoundError, Loc.get_lines_of_code, "test_data/does_not_exist.java"
+        )
 
     def test_correctly_get_number_of_lines_of_code_for_all_files_in_a_directory(self):
         ans = Loc.get_lines_of_code_for_directory("./test_data")
@@ -31,4 +33,6 @@ class LinesOfCodeExtractorTests(unittest.TestCase):
     #     self.assertEqual(42, ans["./test_data/another_example.java"])
 
     def test_get_lines_of_code_for_directory_raises_if_does_not_exist(self):
-        self.assertRaises(NotADirectoryError, Loc.get_lines_of_code_for_directory, "./does_not_exist")
+        self.assertRaises(
+            NotADirectoryError, Loc.get_lines_of_code_for_directory, "./does_not_exist"
+        )

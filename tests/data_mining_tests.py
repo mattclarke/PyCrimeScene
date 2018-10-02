@@ -40,7 +40,9 @@ class DataMiningGitLogTests(unittest.TestCase):
 
     def test_if_commit_id_in_commit_message_number_of_commits_still_correct(self):
         # Stuff a commit id into a commit message - it might happen in real life
-        modified_data = GITLOG_DATA.replace("Create README.md", "Create README.md [cef94a2]")
+        modified_data = GITLOG_DATA.replace(
+            "Create README.md", "Create README.md [cef94a2]"
+        )
         data_miner = DataMiner()
         self.assertEqual(5, data_miner.extract_number_commits(modified_data))
 
@@ -60,7 +62,9 @@ class DataMiningGitLogTests(unittest.TestCase):
     def test_correctly_extracts_number_of_entities_changed_from_code_maat_log(self):
         data_miner = DataMiner()
         # The value to match is the one given by the book
-        self.assertEqual(283, data_miner.extract_number_entities_changed(self.maat_data))
+        self.assertEqual(
+            283, data_miner.extract_number_entities_changed(self.maat_data)
+        )
 
     def test_correctly_extracts_number_of_entities_from_code_maat_log(self):
         data_miner = DataMiner()
@@ -70,7 +74,7 @@ class DataMiningGitLogTests(unittest.TestCase):
     def test_correctly_extracts_dict_of_filenames_with_number_of_changes(self):
         data_miner = DataMiner()
         ans = data_miner.extract_changes_per_file(GITLOG_DATA)
-        self.assertEqual(1, ans['LICENSE'])
-        self.assertEqual(1, ans['data_miner.py'])
-        self.assertEqual(2, ans['tests/DataMiningTests.py'])
-        self.assertEqual(3, ans['tests/data_mining_tests.py'])
+        self.assertEqual(1, ans["LICENSE"])
+        self.assertEqual(1, ans["data_miner.py"])
+        self.assertEqual(2, ans["tests/DataMiningTests.py"])
+        self.assertEqual(3, ans["tests/data_mining_tests.py"])
