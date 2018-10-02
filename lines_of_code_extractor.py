@@ -44,9 +44,14 @@ class LinesOfCodeExtractor(object):
                 full_path = os.path.join(root, file)
                 ans = LinesOfCodeExtractor.get_lines_of_code(full_path)
 
+                # Ignore files with no code
+                if ans == 0:
+                    continue
+
                 # Remove the supplied directory as the git log won't have this
                 full_path = os.path.relpath(full_path, directory)
 
                 loc_files[full_path] = ans
 
         return loc_files
+
