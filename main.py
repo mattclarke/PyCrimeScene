@@ -2,8 +2,7 @@ import argparse
 import json
 from data_miner import DataMiner
 from lines_of_code_extractor import LinesOfCodeExtractor
-from hotspot_compiler import HotSpotCompiler
-from weights_normaliser import normalise_weights
+from hotspot_compiler import create_hotspots
 from structure_generator import generate_structure
 
 
@@ -14,16 +13,14 @@ def main(logfile, directory, output):
     with open(logfile, "r") as myfile:
         logdata = myfile.read()
 
-    # Get the commits
-    commits = DataMiner().extract_changes_per_file(logdata)
-    # Normalise the data into weights
-    weights = normalise_weights(commits)
-
     # Get the complexity
     loc = LinesOfCodeExtractor().get_lines_of_code_for_directory(directory)
 
-    # Compile hotspots
-    hotspots = HotSpotCompiler.merge_raw_data(weights, loc)
+    # Get the commits
+    commits = DataMiner().extract_changes_per_file(logdata)
+
+    # Generate the hotspots
+    hotspots = create_hotspots(commits, loc)
 
     # Dump as CSV
     print(f"Generating CSV file: {output}.csv")

@@ -7,7 +7,7 @@ class LinesOfCodeExtractorTests(unittest.TestCase):
         pass
 
     def test_correctly_gets_number_of_lines_of_code_for_a_single_file(self):
-        self.assertEqual(40, Loc.get_lines_of_code("test_data/example.java"))
+        self.assertEqual(40, Loc.get_lines_of_code("./test_data/example.java"))
 
     def test_get_number_of_lines_of_code_raises_if_file_does_not_exist(self):
         self.assertRaises(
@@ -18,11 +18,11 @@ class LinesOfCodeExtractorTests(unittest.TestCase):
         ans = Loc.get_lines_of_code_for_directory("./test_data")
 
         self.assertEqual(5, len(ans))
-        self.assertEqual(40, ans["./test_data/example.java"])
-        self.assertEqual(42, ans["./test_data/another_example.java"])
-        self.assertEqual(0, ans["./test_data/maat_evo.log"])
-        self.assertEqual(0, ans["./test_data/example.png"])
-        self.assertEqual(7, ans["./test_data/sub_directory/yet_another_example.java"])
+        self.assertEqual(40, ans["example.java"])
+        self.assertEqual(42, ans["another_example.java"])
+        self.assertEqual(0, ans["maat_evo.log"])
+        self.assertEqual(0, ans["example.png"])
+        self.assertEqual(7, ans["sub_directory/yet_another_example.java"])
 
     # Not sure it is important to filter - leave this test commented out for now
     # def test_correctly_get_number_of_lines_of_code_for_code_files_only_in_a_directory(self):
