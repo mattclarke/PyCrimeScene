@@ -50,4 +50,3 @@ class LinesOfCodeExtractor(object):
                 loc_files[full_path] = ans
 
         return loc_files
-
