@@ -1,4 +1,4 @@
-import unittest
+import pytest
 from data_miner import DataMiner
 
 GITLOG_DATA = """
@@ -24,8 +24,9 @@ GITLOG_DATA = """
 """
 
 
-class DataMiningGitLogTests(unittest.TestCase):
-    def setUp(self):
+class TestDataMiner:
+    @pytest.fixture(autouse=True)
+    def prepare(self):
         with open("test_data/maat_evo.log") as file:
             self.maat_data = file.read()
 
