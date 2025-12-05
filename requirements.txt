@@ -1,3 +1,4 @@
+black
 pygount==1.0.0
 pytest
 pre-commit
