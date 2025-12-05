@@ -1,4 +1,4 @@
-from .weights_normaliser import normalise_weights
+from src.weights_normaliser import normalise_weights
 
 
 def create_hotspots(commits, loc):
