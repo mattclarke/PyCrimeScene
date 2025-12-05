@@ -40,20 +40,20 @@ python -m http.server 8080
 The data can then be viewed at `http://localhost:8080/display.html`.
 
 ## For developers
-### Install the commit hooks (important)
-There are commit hooks for Black and Flake8.
+Ruff is used to take care of all the formatting and linting.
 
-The commit hooks are handled using [pre-commit](https://pre-commit.com).
-
-To install the hooks for this project run:
+To format the code:
 ```
-pre-commit install
+ruff format
 ```
 
-To test the hooks run:
+To run the linter:
 ```
-pre-commit run --all-files
+ruff check
 ```
 
-This command can also be used to run the hooks manually.
+To sort the imports:
+```
+ruff check --select I --fix
+```
 
