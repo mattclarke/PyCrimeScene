@@ -19,10 +19,11 @@ From the PyCrimeScene directory:
 ```
 python main.py <path to generated log file> <path to local copy of git repo> <name for output files>
 ```
+There is also an optional `-f` flag for filtering on file extension.
 
 For example:
 ```
-python main.py repo_evo.log /Code/Repos/DMSC/forward-epics-to-kafka/ output
+python main.py -f .py repo_evo.log /Code/Repos/DMSC/forward-epics-to-kafka/ output
 ```
 
 This will produce the files `output.csv` and `output.json`.
