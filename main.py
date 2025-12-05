@@ -42,6 +42,11 @@ if __name__ == "__main__":
     parser.add_argument("logfile")
     parser.add_argument("directory")
     parser.add_argument("output")
-    parser.add_argument("-f", "--file-extension", default="", help="only include files with this extension, e.g. '.py'")
+    parser.add_argument(
+        "-f",
+        "--file-extension",
+        default="",
+        help="only include files with this extension, e.g. '.py'",
+    )
     args = parser.parse_args()
     main(args.logfile, args.directory, args.output, args.file_extension)
