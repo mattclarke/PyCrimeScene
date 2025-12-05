@@ -1,8 +1,9 @@
 import argparse
 import json
+
 from src.data_miner import DataMiner
-from src.lines_of_code_extractor import LinesOfCodeExtractor
 from src.hotspot_compiler import create_hotspots
+from src.lines_of_code_extractor import LinesOfCodeExtractor
 from src.structure_generator import generate_structure
 
 
