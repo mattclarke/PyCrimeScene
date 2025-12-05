@@ -6,7 +6,7 @@ from hotspot_compiler import create_hotspots
 from structure_generator import generate_structure
 
 
-def main(logfile, directory, output):
+def main(logfile, directory, output, file_ext):
     print(f"File chosen for analysis: {logfile}")
 
     # Load the log
@@ -14,7 +14,7 @@ def main(logfile, directory, output):
         logdata = myfile.read()
 
     # Get the complexity
-    loc = LinesOfCodeExtractor().get_lines_of_code_for_directory(directory)
+    loc = LinesOfCodeExtractor().get_lines_of_code_for_directory(directory, file_ext)
 
     # Get the commits
     commits = DataMiner().extract_changes_per_file(logdata)
@@ -42,5 +42,6 @@ if __name__ == "__main__":
     parser.add_argument("logfile")
     parser.add_argument("directory")
     parser.add_argument("output")
+    parser.add_argument("-f", "--file-extension", default="", help="only include files with this extension, e.g. '.py'")
     args = parser.parse_args()
-    main(args.logfile, args.directory, args.output)
+    main(args.logfile, args.directory, args.output, args.file_extension)
