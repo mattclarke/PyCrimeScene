@@ -1,5 +1,7 @@
 import os
+
 import pytest
+
 import tests
 from data_miner import DataMiner
 
