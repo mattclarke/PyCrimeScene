@@ -42,6 +42,9 @@ def merge_raw_data(commits, lines_of_code):
     :param lines_of_code: a dict of file names and the number of lines of code
     :return: a sorted list of tuple (name, changes, lines)
     """
+    if not commits:
+        return []
+
     data = []
     for k, v in commits.items():
         # File may not exist anymore but is still in log
