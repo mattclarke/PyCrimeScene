@@ -1,9 +1,9 @@
 import argparse
 import json
-from data_miner import DataMiner
-from lines_of_code_extractor import LinesOfCodeExtractor
-from hotspot_compiler import create_hotspots
-from structure_generator import generate_structure
+from src.data_miner import DataMiner
+from src.lines_of_code_extractor import LinesOfCodeExtractor
+from src.hotspot_compiler import create_hotspots
+from src.structure_generator import generate_structure
 
 
 def main(logfile, directory, output, file_ext):
