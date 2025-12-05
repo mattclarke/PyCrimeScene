@@ -22,7 +22,7 @@ def test_correctly_get_number_of_lines_of_code_for_all_files_in_a_directory():
     assert len(ans) == 5
     assert ans["example.java"] == 40
     assert ans["another_example.java"] == 42
-    assert ans["maat_evo.log"] == 0
+    assert ans["repo_evo.log"] == 0
     assert ans["example.png"] == 0
     assert ans["sub_directory/yet_another_example.java"] == 7
 
