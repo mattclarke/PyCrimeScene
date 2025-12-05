@@ -1,0 +1,207 @@
+[f182b25] Matt Clarke 2025-12-05 Update lines_of_code_extractor_test.py
+5	5	tests/lines_of_code_extractor_test.py
+
+[44d12af] Matt Clarke 2025-12-05 Update weights_normaliser_test.py
+12	9	tests/weights_normaliser_test.py
+
+[53c6773] Matt Clarke 2025-12-05 Update lines_of_code_extractor_test.py
+38	35	tests/lines_of_code_extractor_test.py
+
+[3bc5195] Matt Clarke 2025-12-05 Create __init__.py
+1	0	tests/__init__.py
+
+[318ada8] Matt Clarke 2025-12-05 Update hotspot_compiler.py
+1	1	src/hotspot_compiler.py
+
+[c109be1] Matt Clarke 2025-12-05 Update requirements.txt
+1	0	requirements.txt
+
+[f0d9bff] Matt Clarke 2025-12-05 Update structure_generator_test.py
+74	76	tests/structure_generator_test.py
+
+[017a74d] Matt Clarke 2025-12-05 Update hotspot_compiler_test.py
+34	38	tests/hotspot_compiler_test.py
+
+[ba2397a] Matt Clarke 2025-12-05 Update data_mining_test.py
+4	3	tests/data_mining_test.py
+
+[2cb3eb9] Matt Clarke 2025-12-05 Update weights_normaliser_test.py
+16	19	tests/weights_normaliser_test.py
+
+[104db74] Matt Clarke 2025-12-05 Update data_miner.py
+13	8	src/data_miner.py
+
+[1877cc5] Matt Clarke 2025-12-05 Update main.py
+4	4	main.py
+
+[30407b6] Matt Clarke 2025-12-05 removed moved files
+0	92	data_miner.py
+0	55	hotspot_compiler.py
+0	52	lines_of_code_extractor.py
+0	38	structure_generator.py
+0	7	weights_normaliser.py
+
+[c5e4443] Matt Clarke 2025-12-05 Update README.md
+2	1	README.md
+
+[21186cd] Matt Clarke 2025-12-05 Update hotspot_compiler.py
+3	0	src/hotspot_compiler.py
+
+[1b1db12] Matt Clarke 2025-12-05 Update weights_normaliser.py
+3	0	src/weights_normaliser.py
+
+[f17d722] Matt Clarke 2025-12-05 Update lines_of_code_extractor.py
+3	3	src/lines_of_code_extractor.py
+
+[08b4b9c] Matt Clarke 2025-12-05 Update main.py
+4	3	main.py
+
+[95641a5] Matt Clarke 2025-12-05 Create __init__.py
+1	0	src/__init__.py
+
+[6a3476a] Matt Clarke 2025-12-05 Create lines_of_code_extractor.py
+52	0	src/lines_of_code_extractor.py
+
+[d6dc1ec] Matt Clarke 2025-12-05 Create weights_normaliser.py
+7	0	src/weights_normaliser.py
+
+[10b8845] Matt Clarke 2025-12-05 Create hotspot_compiler.py
+55	0	src/hotspot_compiler.py
+
+[3fc5dd1] Matt Clarke 2025-12-05 Create data_miner.py
+92	0	src/data_miner.py
+
+[b709b2b] Matt Clarke 2025-12-05 Create structure_generator.py
+38	0	src/structure_generator.py
+
+[b1d67a0] Matt Clarke 2025-12-05 Create pyproject.toml
+4	0	pyproject.toml
+
+[1f7ab26] Matt Clarke 2025-12-05 Rename weights_normaliser_tests.py to weights_normaliser_test.py
+0	0	tests/{weights_normaliser_tests.py => weights_normaliser_test.py}
+
+[ef0467d] Matt Clarke 2025-12-05 Rename structure_generator_tests.py to structure_generator_test.py
+0	0	tests/{structure_generator_tests.py => structure_generator_test.py}
+
+[2573fe3] Matt Clarke 2025-12-05 Rename lines_of_code_extractor_tests.py to lines_of_code_extractor_test.py
+0	0	tests/{lines_of_code_extractor_tests.py => lines_of_code_extractor_test.py}
+
+[6ebe88a] Matt Clarke 2025-12-05 Rename hotspot_compiler_tests.py to hotspot_compiler_test.py
+0	0	tests/{hotspot_compiler_tests.py => hotspot_compiler_test.py}
+
+[6e97c12] Matt Clarke 2025-12-05 Rename data_mining_tests.py to data_mining_test.py
+0	0	tests/{data_mining_tests.py => data_mining_test.py}
+
+[d60f8c7] Matt Clarke 2025-12-05 Update README.md
+8	4	README.md
+
+[397699c] Matt Clarke 2025-12-05 Create d3.v7.min.js
+2	0	display/d3.v7.min.js
+
+[63ed422] Matt Clarke 2025-12-05 Create display.html
+98	0	display/display.html
+
+[d4e6537] Matt Clarke 2019-10-05 Added commit hooks
+5	0	.flake8
+10	0	.pre-commit-config.yaml
+20	1	README.md
+2	1	requirements.txt
+
+[b752ff6] Matt Clarke 2019-08-15 Black formatting
+0	1	lines_of_code_extractor.py
+
+[41f8425] Matt Clarke 2018-10-05 Merge pull request #5 from mjclarke01/4_remove_files_with_no_code
+[b101542] Matt Clarke 2018-10-04 Files that no longer exist or have zero code are removed
+55	21	hotspot_compiler.py
+6	9	main.py
+17	3	tests/hotspot_compiler_tests.py
+6	6	tests/lines_of_code_extractor_tests.py
+
+[63e0fb9] Matt Clarke 2018-10-04 Update lines_of_code_extractor.py
+0	4	lines_of_code_extractor.py
+
+[b47b956] Matt Clarke 2018-10-02 Skip files with no code
+5	0	lines_of_code_extractor.py
+
+[2dd2613] Matt Clarke 2018-10-02 Updated README
+22	1	README.md
+
+[3a3306e] Matt Clarke 2018-10-02 Black
+4	4	data_miner.py
+3	3	lines_of_code_extractor.py
+11	8	structure_generator.py
+10	6	tests/data_mining_tests.py
+6	2	tests/hotspot_compiler_tests.py
+6	2	tests/lines_of_code_extractor_tests.py
+40	40	tests/structure_generator_tests.py
+6	6	tests/weights_normaliser_tests.py
+
+[a326622] Matt Clarke 2018-10-02 Generate files
+16	5	main.py
+35	0	structure_generator.py
+79	0	tests/structure_generator_tests.py
+
+[e3dfc7a] Matt Clarke 2018-10-01 Added weights
+13	1	README.md
+4	1	hotspot_compiler.py
+15	6	lines_of_code_extractor.py
+38	0	main.py
+1	0	requirements.txt
+1	1	tests/hotspot_compiler_tests.py
+2	1	tests/lines_of_code_extractor_tests.py
+25	0	tests/weights_normaliser_tests.py
+7	0	weights_normaliser.py
+
+[07d6981] mjc23 2017-07-13 Added a class for compiling the hotspots
+23	13	data_miner.py
+18	0	hotspot_compiler.py
+4	0	lines_of_code_extractor.py
+11	1	tests/data_mining_tests.py
+23	0	tests/hotspot_compiler_tests.py
+10	7	tests/lines_of_code_extractor_tests.py
+60	0	tests/test_data/sub_directory/yet_another_example.java
+
+[cfbee01] mjc23 2017-07-11 Added tests for LOC
+25	3	lines_of_code_extractor.py
+1	1	tests/data_mining_tests.py
+21	1	tests/lines_of_code_extractor_tests.py
+110	0	tests/test_data/another_example.java
+
+[ce22d47] mjc23 2017-07-11 Reorganised test data
+24	5	data_miner.py
+17	0	lines_of_code_extractor.py
+1	0	requirements.txt
+22	15	tests/data_mining_tests.py
+10	0	tests/lines_of_code_extractor_tests.py
+0	458	tests/maat_evo.log
+106	0	tests/test_data/example.java
+-	-	tests/{ => test_data}/example.png
+
+[550192f] mjc23 2017-07-10 Fixed number of authors method
+4	2	data_miner.py
+8	2	tests/data_mining_tests.py
+
+[751850d] mjc23 2017-07-10 Added data from book for sanity checking
+4	0	.gitignore
+59	1	data_miner.py
+46	18	tests/data_mining_tests.py
+458	0	tests/maat_evo.log
+
+[13b2604] mjc23 2017-07-10 Merge branch 'master' of https://github.com/mjclarke01/PyCrimeScene
+[f9f97a0] Matt Clarke 2017-07-10 Added png for testing purposes
+-	-	tests/example.png
+
+[cef94a2] mjc23 2017-07-10 Added DataMiner class
+3	0	data_miner.py
+0	12	tests/DataMiningTests.py
+25	0	tests/data_mining_tests.py
+
+[74f6bbf] mjc23 2017-07-10 Added first unit test
+12	0	tests/DataMiningTests.py
+
+[1dbf879] mjclarke01 2017-07-10 Create README.md
+2	0	README.md
+
+[9d18261] mjclarke01 2017-07-10 Initial commit
+101	0	.gitignore
+29	0	LICENSE
