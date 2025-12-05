@@ -1,8 +1,9 @@
 import re
 
 
-class DataMiner(object):
-    def extract_number_commits(self, raw_data):
+class DataMiner:
+    @staticmethod
+    def extract_number_commits(raw_data):
         """
         Returns the number of commits contained in the data.
 
@@ -19,7 +20,8 @@ class DataMiner(object):
                 num_commits += 1
         return num_commits
 
-    def extract_number_authors(self, raw_data):
+    @staticmethod
+    def extract_number_authors(raw_data):
         """
         Returns the number of authors who have committed commits.
 
@@ -40,7 +42,8 @@ class DataMiner(object):
                 authors.add(m.groups()[0])
         return len(authors)
 
-    def extract_number_entities_changed(self, raw_data):
+    @staticmethod
+    def extract_number_entities_changed(raw_data):
         """
         Returns the number of times files have had changes committed.
 
@@ -50,7 +53,7 @@ class DataMiner(object):
         :param raw_data: the output of the git log
         :return: number of times files changed
         """
-        files = self.extract_changes_per_file(raw_data)
+        files = DataMiner.extract_changes_per_file(raw_data)
         num_changes = 0
 
         for k, v in files.items():
@@ -58,17 +61,19 @@ class DataMiner(object):
 
         return num_changes
 
-    def extract_number_entities(self, raw_data):
+    @staticmethod
+    def extract_number_entities(raw_data):
         """
         Returns the number of files that have been changed at least once.
 
         :param raw_data: the output of the git log
         :return: number of files changed
         """
-        files = self.extract_changes_per_file(raw_data)
+        files = DataMiner.extract_changes_per_file(raw_data)
         return len(files)
 
-    def extract_changes_per_file(self, raw_data):
+    @staticmethod
+    def extract_changes_per_file(raw_data):
         """
         Returns the number of times each file has changed.
 
