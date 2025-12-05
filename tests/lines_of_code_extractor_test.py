@@ -1,5 +1,7 @@
 import os
+
 import pytest
+
 import tests
 from lines_of_code_extractor import LinesOfCodeExtractor as Loc
 
