@@ -2,7 +2,7 @@ import os
 import pygount
 
 
-class LinesOfCodeExtractor(object):
+class LinesOfCodeExtractor:
     @staticmethod
     def get_lines_of_code(filename):
         """
@@ -22,7 +22,7 @@ class LinesOfCodeExtractor(object):
             raise FileNotFoundError("Could not find file {0}".format(filename))
 
     @staticmethod
-    def get_lines_of_code_for_directory(directory):
+    def get_lines_of_code_for_directory(directory, file_ext=""):
         """
         Gets the number of lines of code for all code files in a directory.
 
@@ -37,7 +37,7 @@ class LinesOfCodeExtractor(object):
 
         for root, dirs, files in os.walk(directory):
             # Ignore hidden files etc.
-            files = [f for f in files if not f[0] == "."]
+            files = [f for f in files if not f[0] == "." and f.endswith(file_ext)]
             dirs[:] = [d for d in dirs if not d[0] == "."]
 
             for file in files:
