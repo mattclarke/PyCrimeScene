@@ -1,4 +1,6 @@
+import os
 import pytest
+import tests
 from data_miner import DataMiner
 
 GITLOG_DATA = """
@@ -27,17 +29,18 @@ GITLOG_DATA = """
 class TestDataMiner:
     @pytest.fixture(autouse=True)
     def prepare(self):
-        with open("test_data/maat_evo.log") as file:
-            self.maat_data = file.read()
+        # Trick to get path of test data
+        path = os.path.join(os.path.dirname(tests.__file__), "test_data/repo_evo.log")
+        with open(path) as file:
+            self.repo_data = file.read()
 
     def test_correctly_extracts_number_of_commits(self):
         data_miner = DataMiner()
-        self.assertEqual(5, data_miner.extract_number_commits(GITLOG_DATA))
+        assert data_miner.extract_number_commits(GITLOG_DATA) == 5
 
-    def test_correctly_extracts_number_of_commits_from_code_maat_log(self):
+    def test_correctly_extracts_number_of_commits_from_code_log(self):
         data_miner = DataMiner()
-        # The value to match is the one given by the book
-        self.assertEqual(88, data_miner.extract_number_commits(self.maat_data))
+        assert data_miner.extract_number_commits(self.repo_data) == 54
 
     def test_if_commit_id_in_commit_message_number_of_commits_still_correct(self):
         # Stuff a commit id into a commit message - it might happen in real life
@@ -45,37 +48,32 @@ class TestDataMiner:
             "Create README.md", "Create README.md [cef94a2]"
         )
         data_miner = DataMiner()
-        self.assertEqual(5, data_miner.extract_number_commits(modified_data))
+        assert data_miner.extract_number_commits(modified_data) == 5
 
     def test_correctly_extracts_number_of_authors(self):
         data_miner = DataMiner()
-        self.assertEqual(3, data_miner.extract_number_authors(GITLOG_DATA))
+        assert data_miner.extract_number_authors(GITLOG_DATA) == 3
 
-    def test_correctly_extracts_number_of_authors_from_code_maat_log(self):
+    def test_correctly_extracts_number_of_authors_from_code_log(self):
         data_miner = DataMiner()
-        # The value to match is the one given by the book
-        self.assertEqual(2, data_miner.extract_number_authors(self.maat_data))
+        assert data_miner.extract_number_authors(self.repo_data) == 3
 
     def test_correctly_extracts_number_of_entities_changed(self):
         data_miner = DataMiner()
-        self.assertEqual(10, data_miner.extract_number_entities_changed(GITLOG_DATA))
+        assert data_miner.extract_number_entities_changed(GITLOG_DATA) == 10
 
-    def test_correctly_extracts_number_of_entities_changed_from_code_maat_log(self):
+    def test_correctly_extracts_number_of_entities_changed_from_code_log(self):
         data_miner = DataMiner()
-        # The value to match is the one given by the book
-        self.assertEqual(
-            283, data_miner.extract_number_entities_changed(self.maat_data)
-        )
+        assert data_miner.extract_number_entities_changed(self.repo_data) == 102
 
-    def test_correctly_extracts_number_of_entities_from_code_maat_log(self):
+    def test_correctly_extracts_number_of_entities_from_code__log(self):
         data_miner = DataMiner()
-        # The value to match is the one given by the book
-        self.assertEqual(45, data_miner.extract_number_entities(self.maat_data))
+        assert data_miner.extract_number_entities(self.repo_data) == 44
 
     def test_correctly_extracts_dict_of_filenames_with_number_of_changes(self):
         data_miner = DataMiner()
         ans = data_miner.extract_changes_per_file(GITLOG_DATA)
-        self.assertEqual(1, ans["LICENSE"])
-        self.assertEqual(1, ans["data_miner.py"])
-        self.assertEqual(2, ans["tests/DataMiningTests.py"])
-        self.assertEqual(3, ans["tests/data_mining_tests.py"])
+        assert ans["LICENSE"] == 1
+        assert ans["data_miner.py"] == 1
+        assert ans["tests/DataMiningTests.py"] == 2
+        assert ans["tests/data_mining_tests.py"] == 3
