@@ -26,7 +26,7 @@ def test_files_with_no_code_are_removed():
     loc = {"File1": 123, "File2": 0, "File3": 1000}
     remove_files_with_no_code(commits, loc)
     assert 2 == len(commits)
-    assert "File2" in commits
+    assert "File2" not in commits
 
 
 def test_files_that_no_longer_exist_are_removed():
@@ -34,4 +34,4 @@ def test_files_that_no_longer_exist_are_removed():
     loc = {"File1": 123, "File3": 1000}
     remove_files_with_no_code(commits, loc)
     assert 2 == len(commits)
-    assert "File2" in commits
+    assert "File2" not in commits
