@@ -1,8 +1,7 @@
 from hotspot_compiler import merge_raw_data, remove_files_with_no_code
 
 
-def test_given_number_of_commit_and_lines_count_then_ordered_by_highest_number_of_commits(
-):
+def test_given_number_of_commit_and_lines_count_then_ordered_by_highest_number_of_commits():
     commits = {"File1": 5, "File2": 15, "File3": 10}
     loc = {"File1": 123, "File2": 321, "File3": 1000}
     ans = merge_raw_data(commits, loc)
@@ -11,8 +10,7 @@ def test_given_number_of_commit_and_lines_count_then_ordered_by_highest_number_o
     assert "File1" == ans[2][0]
 
 
-def test_given_number_of_commits_equal_then_ordered_by_highest_number_of_lines(
-):
+def test_given_number_of_commits_equal_then_ordered_by_highest_number_of_lines():
     commits = {"File1": 5, "File2": 5, "File3": 5}
     loc = {"File1": 123, "File2": 321, "File3": 1000}
     ans = merge_raw_data(commits, loc)
